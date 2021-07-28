@@ -1,0 +1,235 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-family: "Noto Sans", sans-serif;
+  font-size: 62.5%;
+}
+
+.app {
+  position: relative;
+  max-width: 375px;
+  margin: auto;
+  padding-bottom: 32px;
+}
+.app h1 {
+  font-size: 5.4rem;
+  font-weight: bold;
+  margin-top: 24px;
+  text-align: center;
+}
+
+.money {
+  text-align: center;
+  margin-top: 24px;
+  font-size: 2.4rem;
+}
+.money select {
+  border: 2px solid black;
+  border-radius: 7px;
+}
+
+.content {
+  margin-top: 24px;
+}
+.content table {
+  width: 100%;
+  font-size: 2.4rem;
+}
+.content tr {
+  text-align: center;
+}
+.content th, .content td {
+  padding-bottom: 20px;
+}
+.content th:first-child {
+  display: flex;
+}
+.content .edit-name {
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+}
+
+.player {
+  position: relative;
+  width: 140px;
+  height: 60px;
+  margin: 0 auto;
+  background-color: #C4C4C4;
+  color: #000;
+  font-weight: bold;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.player-name {
+  width: 120px;
+  background-color: transparent;
+  border: none;
+  text-align: center;
+}
+.player-name:focus {
+  outline: none;
+}
+.player-name-btn {
+  display: none;
+  position: absolute;
+  right: -10%;
+  padding-bottom: 2px;
+  width: 24px;
+  height: 24px;
+  font-size: 1.4rem;
+  background-color: #29A750;
+  color: #fff;
+  border-radius: 50%;
+}
+.player-name-btn.active {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.player-option {
+  position: absolute;
+  right: -80%;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  background: #c4c4c4;
+  border-radius: 20px;
+  display: none;
+}
+.player-option input {
+  margin: 4px;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 20px;
+  font-size: 2rem;
+  background-color: #000;
+  color: #fff;
+}
+.player-option-picker {
+  position: absolute;
+  display: none;
+  right: -80%;
+  bottom: -50%;
+  display: flex;
+  flex-direction: column;
+}
+.player-option-option.active {
+  display: block;
+}
+.player-option-option.active-picker.active {
+  display: block;
+}
+
+.rank {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  background-color: #C4C4C4;
+  color: #000;
+  font-weight: bold;
+  border-radius: 20px;
+  margin: 0 0 0 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.rank-list {
+  display: none;
+  position: absolute;
+  left: 0;
+}
+.rank-list.active {
+  display: flex;
+}
+.rank-item {
+  background-color: #C4C4C4;
+  color: #000;
+  font-weight: bold;
+  border-radius: 20px;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 4px;
+}
+
+.result {
+  font-weight: bold;
+  width: 100px;
+}
+
+.feature {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.new-btn {
+  width: fit-content;
+  margin: 16px 0;
+  padding: 8px 16px;
+  font-size: 2rem;
+  font-weight: bold;
+  height: 48px;
+  background-color: #c4c4c4;
+  color: #000;
+  border-radius: 20px;
+}
+
+.result-table {
+  margin-top: 40px;
+  min-height: 90vh;
+}
+.result-table h2 {
+  font-size: 3.2rem;
+  text-align: center;
+}
+.result-table table {
+  width: 100%;
+  font-size: 1.6rem;
+  text-align: center;
+  margin-top: 24px;
+}
+.result-table .table-player-name {
+  width: 76px;
+}
+.result-table table, .result-table th {
+  border: 2px solid black;
+}
+.result-table td {
+  border: 1px solid black;
+}
+.result-table tr:first-child {
+  border: 2px solid black;
+  background: #c4c4c4;
+  font-weight: bold;
+}
+
+.scroll-top-btn {
+  position: fixed;
+  width: 40px;
+  height: 40px;
+  right: 16px;
+  bottom: 16px;
+  background-color: #ccc;
+  border-radius: 10px;
+  font-size: 2.4rem;
+  color: #000;
+  opacity: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/*# sourceMappingURL=style.css.map */

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tien Len</title>
+  <link rel="stylesheet" href="./reset.css">
+  <link rel="stylesheet" href="./style.css">
+  <!-- Boostrap + Fontawesome -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <!-- Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="app">
+    <div class="container">
+      <h1>TIẾN LÊN</h1>
+      <div class="money">
+        <span>Tiền</span>
+        <select name="money-picker" id="money-picker">
+          <option value="1">1.000</option>
+          <option value="2">2.000</option>
+          <option value="5">5.000</option>
+        </select>
+        <span>VND</span>
+      </div>
+      <div class="content">
+        <table>
+          <tr>
+            <th>
+              <div class="edit-name">
+                <i class="fas fa-edit"></i>
+              </div>
+              <span>Người chơi</span>
+            </th>
+            <th>Hạng</th>
+            <th>Kết quả</th>
+          </tr>
+          <tr>
+            <td>
+              <div class="player">
+                <div class="player-name">Player 1</div>
+                <div class="player-name-btn">
+                  <i class="fas fa-check"></i>
+                </div>
+                <div class="player-option">
+                  <input type="button" value="Ba Mù">
+                  <input type="button" value="Về lăng">
+                  <input type="button" value="Chặt heo">
+                  <input type="button" value="Cháy">
+                  <div class="player-option-picker">
+                    <input type="button" value="Player 1">
+                    <input type="button" value="Player 2">
+                    <input type="button" value="Player 3">
+                    <input type="button" value="Player 4">
+                  </div>
+                </div>
+              </div>
+            </td>
+            <td>
+              <div class="rank">
+                <span class="rank-text">-</span>
+                <div class="rank-list">
+                </div>
+              </div>
+            </td>
+            <td>
+              <div class="result">
+                <div class="result-text">0</div>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="player">
+                <div class="player-name">Player 2</div>
+                <div class="player-name-btn">
+                  <i class="fas fa-check"></i>
+                </div>
+              </div>
+            </td>
+            <td>
+              <div class="rank">
+                <span class="rank-text">-</span>
+                <div class="rank-list">
+              </div>
+            </td>
+            <td>
+              <div class="result">
+                <div class="result-text">0</div>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="player">
+                <div class="player-name">Player 3</div>
+                <div class="player-name-btn">
+                  <i class="fas fa-check"></i>
+                </div>
+              </div>
+            </td>
+            <td>
+              <div class="rank">
+                <span class="rank-text">-</span>
+                <div class="rank-list">
+              </div>
+            </td>
+            <td>
+              <div class="result">
+                <div class="result-text">0</div>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="player">
+                <div class="player-name">Player 4</div>
+                <div class="player-name-btn">
+                  <i class="fas fa-check"></i>
+                </div>
+              </div>
+            </td>
+            <td>
+              <div class="rank">
+                <span class="rank-text">-</span>
+                <div class="rank-list">
+              </div>
+            </td>
+            <td>
+              <div class="result">
+                <div class="result-text">0</div>
+              </div>
+            </td>
+          </tr>
+        </table>
+        <div class="feature">
+          <div id="new-board" class="new-btn">
+            Ván mới
+          </div>
+          <div id="show-table" class="new-btn">
+            Xem bảng
+          </div>
+        </div>
+      </div>
+      <div class="result-table">
+        <h2>Bảng kết quả</h2>
+        <table>
+          <tr>
+            <th>Ván</th>
+            <th class="table-player-name">Player 1</th>
+            <th class="table-player-name">Player 2</th>
+            <th class="table-player-name">Player 3</th>
+            <th class="table-player-name">Player 4</th>
+          </tr>
+        </table>
+      </div>
+      <div class="scroll-top-btn">
+        <i class="fas fa-arrow-up"></i>
+      </div>
+    </div>
+  </div>
+  <script src="./app.js"></script>
+</body>
+</html>

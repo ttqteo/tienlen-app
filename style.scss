@@ -1,0 +1,228 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-family: 'Noto Sans', sans-serif;
+  font-size: 62.5%;
+}
+
+@mixin flex ($align-item: center, $justify-content: center) {
+  display: flex;
+  align-items: $align-item;
+  justify-content: $justify-content;
+}
+
+@mixin size($width, $height) {
+  width: $width;
+  height: $height;
+}
+
+.app {
+  position: relative;
+  max-width: 375px;
+  margin: auto;
+  padding-bottom: 32px;
+  h1 {
+    font-size: 5.4rem;
+    font-weight: bold;
+    margin-top: 24px;
+    text-align: center;
+  }
+}
+
+.money {
+  text-align: center;
+  margin-top: 24px;
+  font-size: 2.4rem;
+  select {
+    border: 2px solid black;
+    border-radius: 7px;
+  }
+}
+
+.content {
+  margin-top: 24px;
+  table {
+    width: 100%;
+    font-size: 2.4rem;
+  }
+  tr {
+    text-align: center;
+  }
+  th, td {
+    padding-bottom: 20px;
+  }
+  th:first-child {
+    display: flex;
+  }
+  .edit-name {
+    padding: 8px;
+    @include flex;
+    font-size: 1.8rem;
+  }
+}
+
+.player {
+  position: relative;
+  @include size(140px, 60px);
+  margin: 0 auto;
+  background-color: #C4C4C4;
+  color: #000;
+  font-weight: bold;
+  border-radius: 20px;
+  @include flex;
+  &-name {
+    width: 120px;
+    background-color: transparent;
+    border: none;
+    text-align: center;
+  }
+  &-name:focus {
+    outline: none;
+  }
+  &-name-btn {
+    display: none;
+    position: absolute;
+    right: -10%;
+    // padding: 8px;
+    padding-bottom: 2px;
+    @include size(24px, 24px);
+    font-size: 1.4rem;
+    background-color: #29A750;
+    color: #fff;
+    border-radius: 50%;
+  }
+  &-name-btn.active {
+    @include flex;
+  }
+  &-option {
+    position: absolute;
+    right: -80%;
+    top: 0;
+    display: flex;
+    flex-direction: column;
+    background: #c4c4c4;
+    border-radius: 20px;
+    display: none;
+    input {
+      margin: 4px;
+      padding: 8px 16px;
+      border: none;
+      border-radius: 20px;
+      font-size: 2rem;
+      background-color: #000;
+      color: #fff;
+    }
+    &-picker {
+      position: absolute;
+      display: none;
+      right: -80%;
+      bottom: -50%;
+      display: flex;
+      flex-direction: column;
+      input {
+      }
+    }
+    &-option.active {
+      display: block;
+      &-picker.active {
+        display: block;
+      }
+    }
+  }
+}
+
+.rank {
+  position: relative;
+  @include size(40px, 40px);
+  background-color: #C4C4C4;
+  color: #000;
+  font-weight: bold;
+  border-radius: 20px;
+  margin: 0 0 0 8px;
+  @include flex;
+  &-list {
+    display: none;
+    position: absolute;
+    left: 0;
+  }
+  &-list.active {
+    display: flex;
+  }
+  &-item {
+    background-color: #C4C4C4;
+    color: #000;
+    font-weight: bold;
+    border-radius: 20px;
+    @include size(40px, 40px);
+    @include flex;
+    margin-right: 4px;
+  }
+}
+
+.result {
+  font-weight: bold;
+  width: 100px;
+}
+
+.feature {
+  @include flex(center, space-around);
+}
+
+.new-btn {
+  width: fit-content;
+  margin: 16px 0;
+  padding: 8px 16px;
+  font-size: 2rem;
+  font-weight: bold;
+  height: 48px;
+  background-color: #c4c4c4;
+  color: #000;
+  border-radius: 20px;
+}
+
+.result-table {
+  margin-top: 40px;
+  min-height: 90vh;
+  h2 {
+    font-size: 3.2rem;
+    text-align: center;
+  }
+  table {
+    width: 100%;
+    font-size: 1.6rem;
+    text-align: center;
+    margin-top: 24px;
+  }
+  .table-player-name {
+    width: 76px;
+  }
+  table, th {
+    border: 2px solid black;
+  }
+  td {
+    border: 1px solid black;
+  }
+  tr:first-child{
+    border: 2px solid black;
+    background: #c4c4c4;
+    font-weight: bold;
+  }
+}
+
+.scroll-top-btn {
+  position: fixed;
+  @include size(40px, 40px);
+  right: 16px;
+  bottom: 16px;
+  background-color: #ccc;
+  border-radius: 10px;
+  font-size: 2.4rem;
+  color: #000;
+  opacity: 0;
+  @include flex();
+}
