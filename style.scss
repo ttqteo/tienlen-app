@@ -68,15 +68,16 @@ html {
 
 .player {
   position: relative;
-  @include size(140px, 60px);
   margin: 0 auto;
   background-color: #C4C4C4;
   color: #000;
   font-weight: bold;
   border-radius: 20px;
   @include flex;
+  @include size(140px, 60px);
   &-name {
     width: 120px;
+    // height: 60px;
     background-color: transparent;
     border: none;
     text-align: center;
@@ -99,40 +100,64 @@ html {
   &-name-btn.active {
     @include flex;
   }
-  &-option {
+  &-option-list {
+    display: none;
     position: absolute;
-    right: -80%;
-    top: 0;
+    right: -79%;
+    top: -120%;
     flex-direction: column;
     background: #c4c4c4;
     border-radius: 20px;
-    display: none;
-    input {
-      margin: 4px;
-      padding: 8px 16px;
-      border: none;
-      border-radius: 20px;
-      font-size: 2rem;
-      background-color: #000;
-      color: #fff;
-    }
-    &-picker {
-      position: absolute;
-      display: none;
-      right: -80%;
-      bottom: -50%;
-      display: flex;
-      flex-direction: column;
-      input {
-      }
-    }
   }
-  &-option.active {
+  &-picker-item,
+  &-option-item {
+    margin: 6px 6px 0;
+    padding: 8px;
+    border: none;
+    border-radius: 20px;
+    font-size: 2rem;
+    background-color: #000;
+    color: #fff;
+  }
+
+  &-picker-item:last-child,
+  &-option-item:last-child {
+    margin-bottom: 6px;
+  }
+  &-option-list.active {
     display: flex;
     z-index: 1;
-    &-picker.active {
-      display: block;
+  }
+  &-option-box {
+    display: none;
+    position: absolute;
+    top: -30%;
+    right: -5%;
+    span {
+      background-color: #000;
+      color: #fff;
+      border-radius: 20px;
+      font-size: 1.4rem;
+      padding: 4px 8px;
     }
+  }
+  &-option-box.active {
+    display: block;
+  }
+  &-picker-list.active {
+    position: absolute;
+    bottom: -28%;
+    right: -80%;
+    display: none;
+    flex-direction: column;
+    background: #cccccc;
+    border-bottom-left-radius: 20px;
+    border-bottom-right-radius: 20px;
+    border-top-right-radius: 20px;
+    z-index: -1;
+  }
+  &-picker-list.active {
+    display: flex;
   }
 }
 

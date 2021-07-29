@@ -1,11 +1,16 @@
-- Lỗi scroll behavior không smooth trên safari
 - Tính năng sẽ thêm:
-  + Tính năng 3 mù, về lăng, chặt heo, cháy...
+  + Tính năng chặt heo, cháy
   + Thêm hướng dẫn
   + Thêm logo, đổi tên
   + Báo đỏ nếu 'bấm ván mới' sai
+  + Trường hợp ván đầu -> ok 3 mù và về lăng
 - Sửa màu
+
+Chờ Test:
+- Lỗi scroll behavior không smooth trên safari
 
 Sửa tính năng:
 - Bảng kết quả trống
 - Bấm cả ô (-) ăn vào click
+- Ba mù, về lăng
+- Làm lại code tính điểm kết quả (có thể xài chung)

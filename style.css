@@ -59,8 +59,6 @@ html {
 
 .player {
   position: relative;
-  width: 140px;
-  height: 60px;
   margin: 0 auto;
   background-color: #C4C4C4;
   color: #000;
@@ -69,6 +67,8 @@ html {
   display: flex;
   align-items: center;
   justify-content: center;
+  width: 140px;
+  height: 60px;
 }
 .player-name {
   width: 120px;
@@ -96,38 +96,61 @@ html {
   align-items: center;
   justify-content: center;
 }
-.player-option {
+.player-option-list {
+  display: none;
   position: absolute;
-  right: -80%;
-  top: 0;
+  right: -79%;
+  top: -120%;
   flex-direction: column;
   background: #c4c4c4;
   border-radius: 20px;
-  display: none;
 }
-.player-option input {
-  margin: 4px;
-  padding: 8px 16px;
+.player-picker-item, .player-option-item {
+  margin: 6px 6px 0;
+  padding: 8px;
   border: none;
   border-radius: 20px;
   font-size: 2rem;
   background-color: #000;
   color: #fff;
 }
-.player-option-picker {
-  position: absolute;
-  display: none;
-  right: -80%;
-  bottom: -50%;
-  display: flex;
-  flex-direction: column;
+.player-picker-item:last-child, .player-option-item:last-child {
+  margin-bottom: 6px;
 }
-.player-option.active {
+.player-option-list.active {
   display: flex;
   z-index: 1;
 }
-.player-option.active-picker.active {
+.player-option-box {
+  display: none;
+  position: absolute;
+  top: -30%;
+  right: -5%;
+}
+.player-option-box span {
+  background-color: #000;
+  color: #fff;
+  border-radius: 20px;
+  font-size: 1.4rem;
+  padding: 4px 8px;
+}
+.player-option-box.active {
   display: block;
+}
+.player-picker-list.active {
+  position: absolute;
+  bottom: -28%;
+  right: -80%;
+  display: none;
+  flex-direction: column;
+  background: #cccccc;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  border-top-right-radius: 20px;
+  z-index: -1;
+}
+.player-picker-list.active {
+  display: flex;
 }
 
 .rank {
