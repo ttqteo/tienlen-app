@@ -16,7 +16,7 @@ function editName(e) {
   if (e.target.closest(".edit-name")) {
     playerName.forEach((player, index) => {
       playerNameBtn[index].classList.toggle("active", true);
-      playerName[index].setAttribute("contenteditable", "true");
+      player.setAttribute("contenteditable", "true");
     });
     playerName[0].focus();
   }
@@ -84,6 +84,7 @@ function newBoard(e) {
   ];
   if (checkNewBoard()) {
     if (e.target.closest("#new-board")) {
+      $(".table-empty").classList.add("disabled");
       boardNumber++;
       let lengthTable = $$(".result-table tr").length;
       lengthTable++;
@@ -133,8 +134,15 @@ function toTopPage(e) {
   }
 }
 
+function playerOption(e) {
+  if (e.target.closest(".player")) {
+    console.log("ok");
+  }
+}
+
 document.onclick = function (e) {
   editName(e);
+  playerOption(e);
   rankSelect(e);
   newBoard(e);
   showTable(e);

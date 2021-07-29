@@ -1,0 +1,11 @@
+- Lỗi scroll behavior không smooth trên safari
+- Tính năng sẽ thêm:
+  + Tính năng 3 mù, về lăng, chặt heo, cháy...
+  + Thêm hướng dẫn
+  + Thêm logo, đổi tên
+  + Báo đỏ nếu 'bấm ván mới' sai
+- Sửa màu
+
+Sửa tính năng:
+- Bảng kết quả trống
+- Bấm cả ô (-) ăn vào click
