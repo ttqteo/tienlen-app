@@ -102,7 +102,15 @@ function renderBoardResult(moneyArray) {
   $$(".player-option-box").forEach((item) => {
     item.classList.remove("active");
   });
+  //Reset
   specialCase = 0;
+  $$(".hand-input").forEach((value) => {
+    value.value = "";
+  });
+  $(".rank-title").classList.toggle("disabled", false);
+  $(".hand-title").classList.toggle("disabled", true);
+  $$(".rank").forEach((rank) => rank.classList.toggle("disabled", false));
+  $$(".hand").forEach((rank) => rank.classList.toggle("disabled", true));
 }
 
 function newBoard(e) {
@@ -110,19 +118,30 @@ function newBoard(e) {
   const rankMoney = [0, 2, 1, -1, -2];
   let moneyArray = [];
   if (e.target.closest("#new-board")) {
-    if (specialCase > 0) {
-      if (specialCase === 1 || specialCase === 2) {
-        if (boardNumber === 0) {
-          for (let i = 0; i < 4; i++) {
-            moneyArray[i] = 0;
-          }
-        } else {
-          for (let i = 0; i < 4; i++) {
-            resultTextArray[i] +=
-              i === specialCasePlayer ? 9 * typeMoney : -3 * typeMoney;
-            moneyArray[i] =
-              i === specialCasePlayer ? 9 * typeMoney : -3 * typeMoney;
-          }
+    if ($(".rank").classList.contains("disabled")) {
+      let totalType = 0;
+      $$(".hand-input").forEach(
+        (value) => (totalType += parseInt(value.value))
+      );
+      if (totalType === 0) {
+        $$(".hand-input").forEach((value, index) => {
+          moneyArray[index] = value.value;
+        });
+        renderBoardResult(moneyArray);
+      } else {
+        alert("error");
+      }
+    } else if (specialCase > 0) {
+      if (boardNumber === 0) {
+        for (let i = 0; i < 4; i++) {
+          moneyArray[i] = 0;
+        }
+      } else {
+        for (let i = 0; i < 4; i++) {
+          resultTextArray[i] +=
+            i === specialCasePlayer ? 9 * typeMoney : -3 * typeMoney;
+          moneyArray[i] =
+            i === specialCasePlayer ? 9 * typeMoney : -3 * typeMoney;
         }
       }
       renderBoardResult(moneyArray);
@@ -133,6 +152,8 @@ function newBoard(e) {
         moneyArray[index] = rankMoney[parseInt(rank.innerText)];
       });
       renderBoardResult(moneyArray);
+    } else {
+      alert("error");
     }
   }
 }
@@ -160,9 +181,6 @@ function playerOption(e) {
       .querySelector(".player-option-list").innerHTML = `
       <input class="player-option-item" type="button" value="Ba Mù" name="1">
       <input class="player-option-item" type="button" value="Về Lăng" name="2">
-      <input class="player-option-item" type="button" value="Chặt Heo" name="3">
-      <input class="player-option-item" type="button" value="Cháy" name="4">
-      <div class="player-picker-list">
       </div>
       `;
   }
@@ -170,7 +188,7 @@ function playerOption(e) {
     e.target
       .closest(".player")
       .querySelector(".player-option-list")
-      .classList.add("active");
+      .classList.toggle("active");
     e.target
       .closest(".player")
       .querySelector(".player-option-box")
@@ -184,39 +202,21 @@ function playerOption(e) {
     specialCasePlayer = parseInt(
       e.target.closest(".player").getAttribute("data-index")
     );
-    if (specialCase === 3 || specialCase === 4) {
-      console.log("ok");
-      console.log(e.target);
-      e.target
-        .closest(".player-option-list")
-        .querySelector(".player-picker-list")
-        .classList.toggle("active");
+  }
+}
 
-      let renderNameArray = [];
-      playerNameArray.forEach((name, index) => {
-        if (index !== specialCasePlayer) {
-          renderNameArray.push(name);
-        }
-      });
-
-      e.target
-        .closest(".player-option-list")
-        .querySelector(".player-picker-list").innerHTML = `
-          <input class="player-picker-item" type="button" value="${renderNameArray[0]}" name="1">
-          <input class="player-picker-item" type="button" value="${renderNameArray[1]}" name="2">
-          <input class="player-picker-item" type="button" value="${renderNameArray[2]}" name="3">
-        `;
-    } else {
-      e.target
-        .closest(".player")
-        .querySelector(".player-option-list")
-        .classList.remove("active");
-    }
+function swapRankHand(e) {
+  if (e.target.closest(".rank-hand")) {
+    $(".rank-title").classList.toggle("disabled");
+    $(".hand-title").classList.toggle("disabled");
+    $$(".rank").forEach((rank) => rank.classList.toggle("disabled"));
+    $$(".hand").forEach((rank) => rank.classList.toggle("disabled"));
   }
 }
 
 document.addEventListener("click", function (e) {
   editName(e);
+  swapRankHand(e);
   playerOption(e);
   rankSelect(e);
   newBoard(e);

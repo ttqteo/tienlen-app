@@ -33,6 +33,11 @@ html {
   border-radius: 7px;
 }
 
+.rank-title.disabled,
+.hand-title.disabled {
+  display: none;
+}
+
 .content {
   margin-top: 24px;
 }
@@ -99,13 +104,13 @@ html {
 .player-option-list {
   display: none;
   position: absolute;
-  right: -79%;
-  top: -120%;
+  right: -60%;
+  top: -40%;
   flex-direction: column;
   background: #c4c4c4;
   border-radius: 20px;
 }
-.player-picker-item, .player-option-item {
+.player-option-item {
   margin: 6px 6px 0;
   padding: 8px;
   border: none;
@@ -114,7 +119,7 @@ html {
   background-color: #000;
   color: #fff;
 }
-.player-picker-item:last-child, .player-option-item:last-child {
+.player-option-item:last-child {
   margin-bottom: 6px;
 }
 .player-option-list.active {
@@ -136,21 +141,6 @@ html {
 }
 .player-option-box.active {
   display: block;
-}
-.player-picker-list.active {
-  position: absolute;
-  bottom: -28%;
-  right: -80%;
-  display: none;
-  flex-direction: column;
-  background: #cccccc;
-  border-bottom-left-radius: 20px;
-  border-bottom-right-radius: 20px;
-  border-top-right-radius: 20px;
-  z-index: -1;
-}
-.player-picker-list.active {
-  display: flex;
 }
 
 .rank {
@@ -188,6 +178,23 @@ html {
   align-items: center;
   justify-content: center;
   margin-right: 4px;
+}
+
+.rank.disabled {
+  display: none;
+}
+
+.hand-input {
+  width: 62px;
+  text-align: center;
+  border: 2px solid black;
+  border-radius: 5px;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.hand.disabled {
+  display: none;
 }
 
 .result {

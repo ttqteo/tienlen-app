@@ -1,16 +1,15 @@
 - Tính năng sẽ thêm:
-  + Tính năng chặt heo, cháy
   + Thêm hướng dẫn
-  + Thêm logo, đổi tên
-  + Báo đỏ nếu 'bấm ván mới' sai
-  + Trường hợp ván đầu -> ok 3 mù và về lăng
+  + Báo đỏ nếu 'bấm ván mới' sai !! (alert-error)
+  + Bấm 3 mù đứa khác thì đứa kia mất
 - Sửa màu
 
-Chờ Test:
 - Lỗi scroll behavior không smooth trên safari
 
 Sửa tính năng:
+- Hạng <-> nhập tay
 - Bảng kết quả trống
 - Bấm cả ô (-) ăn vào click
 - Ba mù, về lăng
 - Làm lại code tính điểm kết quả (có thể xài chung)
+  + Thêm logo, đổi tên
