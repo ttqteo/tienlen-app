@@ -103,6 +103,9 @@ html {
   height: 60px;
   z-index: 1;
 }
+.player--unfocus {
+  opacity: 0.5;
+}
 .player-name {
   width: 120px;
   background-color: transparent;
@@ -133,14 +136,14 @@ html {
 .player-option-list {
   display: none;
   position: absolute;
-  right: -133%;
-  top: 10%;
+  right: -77%;
+  top: 0;
   background: #c4c4c4;
   border-radius: 20px;
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
 }
 .player-option-item {
-  margin: 6px 0;
+  margin: 6px 6px;
   padding: 4px 8px;
   border: none;
   border-radius: 20px;
@@ -149,14 +152,9 @@ html {
   background-color: #000;
   color: #fff;
 }
-.player-option-item:first-child {
-  margin-left: 6px;
-}
-.player-option-item:last-child {
-  margin-right: 6px;
-}
 .player-option-list.active {
-  display: block;
+  display: flex;
+  flex-direction: column;
 }
 .player-option-box {
   display: none;
@@ -321,6 +319,13 @@ footer {
   font-weight: bold;
   font-style: italic;
   text-align: center;
+}
+footer .tutorial-title {
+  text-decoration: underline;
+  background-color: #eee;
+}
+footer .tutorial-list.disabled {
+  display: none;
 }
 
 /*# sourceMappingURL=style.css.map */

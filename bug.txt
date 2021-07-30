@@ -1,8 +1,8 @@
 - Tính năng sẽ thêm:
   + Thêm hướng dẫn
-- Lưu lịch sử ván 
 
 Sửa tính năng:
+- Lưu lịch sử ván 
 - Sửa màu
 - Nút hạng - nhập tay
 - Hạng <-> nhập tay

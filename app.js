@@ -1,12 +1,17 @@
 const $ = document.querySelector.bind(document);
 const $$ = document.querySelectorAll.bind(document);
 
+const MONEY_STORAGE_KEY = "MONEY-ARRAY";
+const config = JSON.parse(localStorage.getItem(MONEY_STORAGE_KEY)) || {};
+
 let playerNameArray = ["Player 1", "Player 2", "Player 3", "Player 4"];
-let rankTextArray = [];
 let resultTextArray = [0, 0, 0, 0];
+let specialCase = -1;
+let specialCasePlayer = -1;
+let currIndex = -1;
+let rankTextArray = [];
 let boardNumber = 0;
-let specialCase = 0;
-let specialCasePlayer = 0;
+let moneyArrayBoard = [];
 
 const playerName = $$(".player-name");
 const playerNameBtn = $$(".player-name-btn");
@@ -37,6 +42,42 @@ function scrollToSmoothly(pos, time) {
   });
 }
 
+// function Initial Render
+
+function renderInitial() {
+  //Name Player
+  playerName.forEach((player, index) => {
+    player.innerHTML = playerNameArray[index];
+    tablePlayerName[index].innerText = playerNameArray[index];
+  });
+  //Result Summary
+  resultText.forEach((result, index) => {
+    if (resultTextArray[index] === 0) {
+      result.innerHTML = `0`;
+    } else {
+      result.innerHTML = `${resultTextArray[index] > 0 ? "+" : ""}${
+        resultTextArray[index]
+      }.000`;
+    }
+  });
+  //Table Result
+  if (boardNumber > 0) $(".table-empty").classList.add("disabled");
+  moneyArrayBoard.forEach((money, index) => {
+    let htmls = money.moneyArray
+      .map((money) => {
+        if (money === 0) return `<td>0</td>`;
+        else return `<td>${money > 0 ? "+" : ""}${money}.000</td>`;
+      })
+      .join("");
+
+    $(".result-table tbody").innerHTML += `
+        <tr>
+          <td>${money.boardNumber}</td>
+          ${htmls}
+        </tr>`;
+  });
+}
+
 // function Handle
 
 function editName(e) {
@@ -57,6 +98,7 @@ function editName(e) {
       playerNameArray[index] = player.innerText;
       tablePlayerName[index].innerText = player.innerText;
     });
+    setConfig("playerNameArray", playerNameArray);
   }
 }
 
@@ -129,6 +171,12 @@ function renderBoardResult(moneyArray) {
   $$(".player-option-box").forEach((item) => {
     item.classList.remove("active");
   });
+
+  moneyArrayBoard.push({ boardNumber: boardNumber, moneyArray: moneyArray });
+
+  setConfig("resultTextArray", resultTextArray);
+  setConfig("moneyArrayBoard", moneyArrayBoard);
+  setConfig("boardNumber", boardNumber);
   //Reset
   specialCase = 0;
   $$(".hand-input").forEach((value) => {
@@ -138,6 +186,10 @@ function renderBoardResult(moneyArray) {
   $(".hand-title").classList.toggle("disabled", true);
   $$(".rank").forEach((rank) => rank.classList.toggle("disabled", false));
   $$(".hand").forEach((rank) => rank.classList.toggle("disabled", true));
+  $$(".hand-input").forEach((input) => input.classList.toggle("error", false));
+  $$(".rank-text").forEach((text) => {
+    text.classList.toggle("error", false);
+  });
 }
 
 function newBoard(e) {
@@ -219,6 +271,12 @@ function playerOption(e) {
         <input class="player-option-item" type="button" value="Về Lăng" name="2">
         </div>
         `;
+      currIndex = parseInt(
+        e.target.closest(".player").getAttribute("data-index")
+      );
+      $$(".player").forEach((player, index) => {
+        if (index !== currIndex) player.classList.add("player--unfocus");
+      });
     }
     if (e.target.closest(".player-option-list")) {
       $$(".player-option-box").forEach((box) => {
@@ -236,11 +294,20 @@ function playerOption(e) {
         .closest(".player")
         .querySelector(
           ".player-option-box"
-        ).innerHTML = `<span>${e.target.value}</span>`;
+        ).innerHTML = `<span>${e.target.value} <i class="fas fa-times"></i></span>`;
       specialCase = parseInt(e.target.name);
       specialCasePlayer = parseInt(
         e.target.closest(".player").getAttribute("data-index")
       );
+      $$(".player").forEach((player, index) => {
+        if (index !== currIndex) player.classList.remove("player--unfocus");
+      });
+      currIndex = -1;
+    }
+    if (e.target.closest(".player-option-box")) {
+      e.target.closest(".player-option-box").classList.remove("active");
+      specialCase = -1;
+      specialCasePlayer = -1;
     }
   }
 }
@@ -254,6 +321,30 @@ function swapRankHand(e) {
   }
 }
 
+function loadConfig() {
+  playerNameArray = config.playerNameArray;
+  resultTextArray = config.resultTextArray;
+  moneyArrayBoard = config.moneyArrayBoard;
+  boardNumber = config.boardNumber;
+  if (playerNameArray === undefined)
+    playerNameArray = ["Player 1", "Player 2", "Player 3", "Player 4"];
+  if (boardNumber === undefined) boardNumber = 0;
+  if (resultTextArray === undefined) resultTextArray = [0, 0, 0, 0];
+  if (moneyArrayBoard === undefined) moneyArrayBoard = new Array();
+  renderInitial();
+}
+
+function setConfig(key, value) {
+  config[key] = value;
+  localStorage.setItem(MONEY_STORAGE_KEY, JSON.stringify(config));
+}
+
+function tutorial(e) {
+  if (e.target.closest(".tutorial-wrap")) {
+    $(".tutorial-list").classList.toggle("disabled");
+  }
+}
+
 document.addEventListener("click", function (e) {
   editName(e);
   swapRankHand(e);
@@ -261,9 +352,13 @@ document.addEventListener("click", function (e) {
   rankSelect(e);
   newBoard(e);
   showTable(e);
+  tutorial(e);
   toTopPage(e);
 });
 
 document.onscroll = function () {
   $(".scroll-top-btn").style.opacity = (window.scrollY - 62) / 100;
 };
+
+loadConfig();
+localStorage.clear();
