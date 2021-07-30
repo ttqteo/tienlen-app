@@ -1,15 +1,17 @@
 - Tính năng sẽ thêm:
   + Thêm hướng dẫn
-  + Báo đỏ nếu 'bấm ván mới' sai !! (alert-error)
-  + Bấm 3 mù đứa khác thì đứa kia mất
-- Sửa màu
-
-- Lỗi scroll behavior không smooth trên safari
+- Lưu lịch sử ván 
 
 Sửa tính năng:
+- Sửa màu
+- Nút hạng - nhập tay
 - Hạng <-> nhập tay
 - Bảng kết quả trống
 - Bấm cả ô (-) ăn vào click
 - Ba mù, về lăng
 - Làm lại code tính điểm kết quả (có thể xài chung)
+- Tính năng:
   + Thêm logo, đổi tên
+  + Bấm 3 mù đứa khác thì đứa kia mất
+  + Báo đỏ nếu 'bấm ván mới' sai !! (alert-error)
+- Lỗi scroll behavior không smooth trên safari

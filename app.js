@@ -14,6 +14,31 @@ const tablePlayerName = $$(".table-player-name");
 const rankText = $$(".rank-text");
 const resultText = $$(".result-text");
 
+// Library
+
+function scrollToSmoothly(pos, time) {
+  var currentPos = window.pageYOffset;
+  var start = null;
+  if (time == null) time = 500;
+  (pos = +pos), (time = +time);
+  window.requestAnimationFrame(function step(currentTime) {
+    start = !start ? currentTime : start;
+    var progress = currentTime - start;
+    if (currentPos < pos) {
+      window.scrollTo(0, ((pos - currentPos) * progress) / time + currentPos);
+    } else {
+      window.scrollTo(0, currentPos - ((currentPos - pos) * progress) / time);
+    }
+    if (progress < time) {
+      window.requestAnimationFrame(step);
+    } else {
+      window.scrollTo(0, pos);
+    }
+  });
+}
+
+// function Handle
+
 function editName(e) {
   if (e.target.closest(".edit-name")) {
     playerName.forEach((player, index) => {
@@ -37,7 +62,6 @@ function editName(e) {
 
 function rankSelect(e) {
   if (e.target.closest(".rank-text")) {
-    let rankNumber = e.target.closest(".rank-text").innerText;
     e.target
       .closest(".rank")
       .querySelector(".rank-list")
@@ -49,6 +73,9 @@ function rankSelect(e) {
         <div class="rank-item">4</div>`;
   }
   if (e.target.closest(".rank-list")) {
+    $$(".rank-text").forEach((text) => {
+      text.classList.toggle("error", false);
+    });
     let rankNum = e.target.closest(".rank-item").innerText;
     e.target.closest(".rank").querySelector(".rank-text").innerText = rankNum;
     e.target
@@ -129,7 +156,9 @@ function newBoard(e) {
         });
         renderBoardResult(moneyArray);
       } else {
-        alert("error");
+        $$(".hand-input").forEach((input) =>
+          input.classList.toggle("error", true)
+        );
       }
     } else if (specialCase > 0) {
       if (boardNumber === 0) {
@@ -153,55 +182,66 @@ function newBoard(e) {
       });
       renderBoardResult(moneyArray);
     } else {
-      alert("error");
+      $$(".rank-text").forEach((text) => {
+        text.classList.toggle("error", true);
+      });
     }
   }
 }
 
 function showTable(e) {
   if (e.target.closest("#show-table")) {
-    window.scrollTo(0, 650);
+    scrollToSmoothly(650, 200);
   }
 }
 
 function toTopPage(e) {
   if (e.target.closest(".scroll-top-btn")) {
-    window.scrollTo(0, 0);
+    scrollToSmoothly(0, 200);
   }
 }
 
 function playerOption(e) {
-  if (e.target.closest(".player-name")) {
-    e.target
-      .closest(".player")
-      .querySelector(".player-option-list")
-      .classList.toggle("active");
-    e.target
-      .closest(".player")
-      .querySelector(".player-option-list").innerHTML = `
-      <input class="player-option-item" type="button" value="Ba Mù" name="1">
-      <input class="player-option-item" type="button" value="Về Lăng" name="2">
-      </div>
-      `;
-  }
-  if (e.target.closest(".player-option-list")) {
-    e.target
-      .closest(".player")
-      .querySelector(".player-option-list")
-      .classList.toggle("active");
-    e.target
-      .closest(".player")
-      .querySelector(".player-option-box")
-      .classList.add("active");
-    e.target
-      .closest(".player")
-      .querySelector(
-        ".player-option-box"
-      ).innerHTML = `<span>${e.target.value}</span>`;
-    specialCase = parseInt(e.target.name);
-    specialCasePlayer = parseInt(
-      e.target.closest(".player").getAttribute("data-index")
-    );
+  let count = 0;
+  $$(".player-name-btn").forEach((name) => {
+    if (!name.classList.contains("active")) count++;
+  });
+  if (count === 4) {
+    if (e.target.closest(".player-name")) {
+      e.target
+        .closest(".player")
+        .querySelector(".player-option-list")
+        .classList.toggle("active");
+      e.target
+        .closest(".player")
+        .querySelector(".player-option-list").innerHTML = `
+        <input class="player-option-item" type="button" value="Ba Mù" name="1">
+        <input class="player-option-item" type="button" value="Về Lăng" name="2">
+        </div>
+        `;
+    }
+    if (e.target.closest(".player-option-list")) {
+      $$(".player-option-box").forEach((box) => {
+        box.classList.remove("active");
+      });
+      e.target
+        .closest(".player")
+        .querySelector(".player-option-list")
+        .classList.toggle("active");
+      e.target
+        .closest(".player")
+        .querySelector(".player-option-box")
+        .classList.add("active");
+      e.target
+        .closest(".player")
+        .querySelector(
+          ".player-option-box"
+        ).innerHTML = `<span>${e.target.value}</span>`;
+      specialCase = parseInt(e.target.name);
+      specialCasePlayer = parseInt(
+        e.target.closest(".player").getAttribute("data-index")
+      );
+    }
   }
 }
 

@@ -29,13 +29,38 @@ html {
   font-size: 2.4rem;
 }
 .money select {
-  border: 2px solid black;
+  border: none;
   border-radius: 7px;
+  background: none;
+  font-weight: bold;
+}
+
+.rank-hand {
+  background-color: #ccc;
+  border-radius: 20px;
+  width: 60px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.rank-title,
+.hand-title {
+  font-size: 1.6rem;
+  width: 28px;
+  height: 28px;
+  background-color: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .rank-title.disabled,
 .hand-title.disabled {
-  display: none;
+  background-color: transparent;
 }
 
 .content {
@@ -66,14 +91,17 @@ html {
   position: relative;
   margin: 0 auto;
   background-color: #C4C4C4;
-  color: #000;
+  color: #fff;
   font-weight: bold;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
   border-radius: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
   width: 140px;
   height: 60px;
+  z-index: 1;
 }
 .player-name {
   width: 120px;
@@ -87,14 +115,15 @@ html {
 .player-name-btn {
   display: none;
   position: absolute;
-  right: -10%;
+  right: -12%;
   padding-bottom: 2px;
-  width: 24px;
-  height: 24px;
-  font-size: 1.4rem;
+  width: 32px;
+  height: 32px;
+  font-size: 1.8rem;
   background-color: #29A750;
   color: #fff;
   border-radius: 50%;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
 }
 .player-name-btn.active {
   display: flex;
@@ -104,27 +133,30 @@ html {
 .player-option-list {
   display: none;
   position: absolute;
-  right: -60%;
-  top: -40%;
-  flex-direction: column;
+  right: -133%;
+  top: 10%;
   background: #c4c4c4;
   border-radius: 20px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
 }
 .player-option-item {
-  margin: 6px 6px 0;
-  padding: 8px;
+  margin: 6px 0;
+  padding: 4px 8px;
   border: none;
   border-radius: 20px;
   font-size: 2rem;
+  font-weight: bold;
   background-color: #000;
   color: #fff;
 }
+.player-option-item:first-child {
+  margin-left: 6px;
+}
 .player-option-item:last-child {
-  margin-bottom: 6px;
+  margin-right: 6px;
 }
 .player-option-list.active {
-  display: flex;
-  z-index: 1;
+  display: block;
 }
 .player-option-box {
   display: none;
@@ -150,13 +182,19 @@ html {
 .rank-text {
   width: 40px;
   height: 40px;
-  background-color: #C4C4C4;
+  background-color: #dedede;
   color: #000;
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
   font-weight: bold;
   border-radius: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+.rank-text.error {
+  background-color: #D1342D;
+  color: #fff;
 }
 .rank-list {
   display: none;
@@ -185,12 +223,16 @@ html {
 }
 
 .hand-input {
-  width: 62px;
+  width: 60px;
+  height: 40px;
   text-align: center;
   border: 2px solid black;
   border-radius: 5px;
-  font-size: 2rem;
+  font-size: 1.8rem;
   font-weight: bold;
+}
+.hand-input.error {
+  border: 3px solid #D1342D;
 }
 
 .hand.disabled {
@@ -209,20 +251,19 @@ html {
 }
 
 .new-btn {
-  width: fit-content;
   margin: 16px 0;
   padding: 8px 16px;
   font-size: 2rem;
-  font-weight: bold;
   height: 48px;
-  background-color: #c4c4c4;
-  color: #000;
+  background-color: #1B9AF7;
+  color: #fff;
   border-radius: 20px;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .result-table {
   margin-top: 40px;
-  min-height: 90vh;
+  min-height: 75vh;
 }
 .result-table h2 {
   font-size: 3.2rem;
@@ -273,6 +314,13 @@ html {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+footer {
+  font-size: 1.4rem;
+  font-weight: bold;
+  font-style: italic;
+  text-align: center;
 }
 
 /*# sourceMappingURL=style.css.map */
