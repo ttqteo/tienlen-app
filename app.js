@@ -259,7 +259,10 @@ function playerOption(e) {
     if (!name.classList.contains("active")) count++;
   });
   if (count === 4) {
-    if (e.target.closest(".player-name")) {
+    if (
+      e.target.closest(".player-name") &&
+      !e.target.closest(".player").classList.contains("player--unfocus")
+    ) {
       e.target
         .closest(".player")
         .querySelector(".player-option-list")

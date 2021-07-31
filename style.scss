@@ -51,6 +51,7 @@ html {
 
 
 .rank-hand {
+  position: relative;
   background-color: #ccc;
   border-radius: 20px;
   @include size(60px, 32px);
@@ -65,6 +66,31 @@ html {
   background-color: #fff;
   border-radius: 50%;
   @include flex;
+}
+
+.rank-title::after {
+  content: "Thứ hạng";
+  display: block;
+  position: absolute;
+  bottom: -70%;
+  right: -20%;
+  font-size: 1.4rem;
+  width: 80px;
+}
+
+.hand-title::after {
+  content: "Nhập tay";
+  display: block;
+  position: absolute;
+  bottom: -70%;
+  right: -20%;
+  font-size: 1.4rem;
+  width: 80px;
+}
+
+.rank-title.disabled::after,
+.hand-title.disabled::after  {
+  display: none;
 }
 
 .rank-title.disabled,
@@ -151,12 +177,6 @@ html {
     font-weight: bold;
     background-color: #000;
     color: #fff;
-  }
-  &-option-item:first-child {
-    // margin-top: 6px;
-  }
-  &-option-item:last-child {
-    // margin-bottom: 6px;
   }
   &-option-list.active {
     display: flex;

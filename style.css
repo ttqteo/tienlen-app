@@ -1,3 +1,4 @@
+@charset "UTF-8";
 * {
   padding: 0;
   margin: 0;
@@ -36,6 +37,7 @@ html {
 }
 
 .rank-hand {
+  position: relative;
   background-color: #ccc;
   border-radius: 20px;
   width: 60px;
@@ -56,6 +58,31 @@ html {
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.rank-title::after {
+  content: "Thứ hạng";
+  display: block;
+  position: absolute;
+  bottom: -70%;
+  right: -20%;
+  font-size: 1.4rem;
+  width: 80px;
+}
+
+.hand-title::after {
+  content: "Nhập tay";
+  display: block;
+  position: absolute;
+  bottom: -70%;
+  right: -20%;
+  font-size: 1.4rem;
+  width: 80px;
+}
+
+.rank-title.disabled::after,
+.hand-title.disabled::after {
+  display: none;
 }
 
 .rank-title.disabled,
